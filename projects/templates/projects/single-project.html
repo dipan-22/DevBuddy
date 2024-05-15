@@ -1,9 +1,18 @@
+STY
+
 {% extends "main.html" %}
 
 {% block content %}
 
 <h1>{{project.title}}</h1>
 <br>
-<h2>{{project.description}}</h2>
+<hr>
+{% for tag in project.tags.all %}
+
+<span>{{tag}}</span>
+
+{% endfor %}
+<hr>
+<h5>{{project.description}}</h5>
 
 {% endblock content %}

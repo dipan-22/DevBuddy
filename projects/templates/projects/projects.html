@@ -3,7 +3,7 @@
 
 {%block content%}
 
-<p>hello you are on the {{page}} page</p>
+{% comment %} <p>hello you are on the {{page}} page</p>
 
 
 {% if number > 10 %}
@@ -19,20 +19,45 @@
 
 <hr>
 
-<h1>Projects</h1>
+<h1>Projects</h1> {% endcomment %}
 
-<ul>
+
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>PROJECT</th>
+        <th>RATIO</th>
+        <th>POSITIVE VOTES</th>
+
+    </tr>
+    {% for project in projects   %}
+    <tr>
+        <td>{{project.id}}</td>
+        <td>{{project.title}}</td>
+        <td>{{project.vote_total}}</td>
+        <td>{{project.vote_ratio}}%</td>
+        <td>{{project.created}}</td>
+        <td><a href="{% url 'project' project.id %}">View</a></td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+{% comment %} <ul>
  {% for project in projects   %}
  
  <li>
     
     {% comment %} Title:<a href="/project/{{project.id}}">{{project.title}}</a> ----  {{project.description}} {% endcomment %}
 
-    Title:<a href="{% url 'project' project.id %}">{{project.title}}</a> ----  {{project.description}}
+    {% comment %} Title:<a href="{% url 'project' project.id %}">{{project.title}}</a> ----  {{project.description}}
+    {% comment %} Title: {{project.title}}---{{project.id}} {% endcomment %}
 </li>
 
- {% endfor %}
+ {% comment %} {% endfor %}
     
-</ul>
+</ul>  {% endcomment %} 
 
 {% endblock content %}
